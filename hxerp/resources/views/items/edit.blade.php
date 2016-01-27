@@ -14,8 +14,8 @@
         <li role="presentation"><a href="#">Profile</a></li>
         <li role="presentation"><a href="#">Messages</a></li>
     </ul> --}}
-  @include('items.edit_charass')  
     
+    @include('items.edit_charass')    
 
 
     @include('errors.list')
@@ -29,8 +29,10 @@
      	    $.ajax({
          	    type:"POST",
          	    url:"{{ url('product/charasses/addrecord') }}",
-         	    data:$("form#formCharass").serialize(),
+         	    data: $("form#formCharass").serialize(),
+          	    contentType:"application/x-www-form-urlencoded",
          	    error:function(xhr, ajaxOptions, thrownError){
+             	    alert($("form#formCharass").serialize());
              	    alert('error');
 					alert(xhr.status);
 					alert(xhr.responseText);
@@ -38,7 +40,7 @@
 					alert(thrownError);
              	},
              	success:function(msg){
-             	    alert('添加成功.');
+             	    alert('添加成功:' + msg);
               	    $('#exampleModal').modal('toggle');
 					$.getJSON("{{ url('product/charasses/getCharassesByTargetId/I/' . $item->id) }}", 
 							function(data) {

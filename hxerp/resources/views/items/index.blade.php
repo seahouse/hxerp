@@ -4,10 +4,10 @@
 
 @section('main')
     <div class="panel-heading">
-        <div class="panel-title">产品 -- 物料
+        <div class="panel-title">基础资料 -- 物料
             <div class="pull-right">
                 <a href="{{ URL::to('itemclasses') }}" target="_blank" class="btn btn-sm btn-success">{{'物料类型管理'}}</a>
-                <a href="{{ URL::to('product/characteristics') }}" class="btn btn-sm btn-success">{{'物料属性管理'}}</a>
+                <a href="{{ URL::to('product/characteristics') }}" target="_blank" class="btn btn-sm btn-success">{{'物料属性管理'}}</a>
             </div>
         </div>
     </div>

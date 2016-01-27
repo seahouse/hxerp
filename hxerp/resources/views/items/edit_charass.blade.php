@@ -39,18 +39,28 @@
         <h4 class="modal-title" id="exampleModalLabel">添加属性</h4>
       </div>
       <div class="modal-body">
-        <form method="post" id="formCharass">
+        <form method="post" id="formCharass" class="form-horizontal">
+            {!! csrf_field() !!}
           <div class="form-group">
-            <label for="recipient-name" class="control-label">属性:</label>
+            {!! Form::label('char_id', '属性:', ['class' => 'col-sm-2 control-label']) !!}
+{{--            <label for="recipient-name" class="control-label">属性:</label> --}}
+            <div class='col-sm-10'>
             {!! Form::select('char_id', $charIList, null, ['class' => 'form-control']) !!}
+            </div>
           </div>
           <div class="form-group">
-            <label for="message-text" class="control-label">值:</label>
+            {!! Form::label('value', '值:', ['class' => 'col-sm-2 control-label']) !!}
+{{--            <label for="message-text" class="control-label">值:</label> --}}
+            <div class='col-sm-10'>
             {!! Form::text('value', null, ['class' => 'form-control']) !!}
+            </div>
           </div>
           <div class="form-group">
-            <label for="message-text" class="control-label">价格:</label>
+            {!! Form::label('price', '价格:', ['class' => 'col-sm-2 control-label']) !!}
+{{--            <label for="message-text" class="control-label">价格:</label> --}}
+            <div class='col-sm-10'>
             {!! Form::text('price', '0.0', ['class' => 'form-control']) !!}
+            </div>
           </div>
           {!! Form::hidden('target_type', 'I', ['class' => 'form-control']) !!}
           {!! Form::hidden('target_id', $item->id, ['class' => 'form-control']) !!}
