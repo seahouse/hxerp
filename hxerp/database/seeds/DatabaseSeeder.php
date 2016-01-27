@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call('ItemtypesSeeder');
         $this->call('RoleSeeder');
         $this->call(ItemClassesTableSeeder::class);
+        $this->call(CharacteristicTableSeeder::class);
 
         Model::reguard();
     }
