@@ -34,12 +34,12 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/', function() { return view('navbarerp'); });
 	Route::get('/home', function() { return view('navbarerp'); });
 
-    Route::resource('itemclasses', 'ItemclassesController');
-    Route::post('items/search', 'ItemsController@search');
-    Route::group(['prefix' => 'items'], function() {
-        Route::get('mindex', 'ItemsController@mindex');
-    });
-    Route::resource('items', 'ItemsController');
+//     Route::resource('itemclasses', 'ItemclassesController');
+//     Route::post('items/search', 'ItemsController@search');
+//     Route::group(['prefix' => 'items'], function() {
+//         Route::get('mindex', 'ItemsController@mindex');
+//     });
+//     Route::resource('items', 'ItemsController');
     Route::resource('accountingorder1s', 'Accountingorder1sController');
     Route::resource('boms', 'BomsController');
     Route::get('bomitems/{id}/createitem', 'BomitemsController@createitem');
@@ -63,6 +63,12 @@ Route::group(['prefix' => 'inventory', 'namespace' => 'Inventory', 'middleware' 
 });
 
 Route::group(['prefix' => 'product', 'namespace' => 'Product', 'middleware' => ['web', 'auth']], function() {
+    Route::resource('itemclasses', 'ItemclassesController');
+    Route::post('items/search', 'ItemsController@search');
+    Route::group(['prefix' => 'items'], function() {
+        Route::get('mindex', 'ItemsController@mindex');
+    });
+    Route::resource('items', 'ItemsController');
     Route::resource('characteristics', 'CharacteristicsController');
     Route::group(['prefix' => 'charasses'], function() {
         Route::post('addrecord', 'CharassesController@addrecord');

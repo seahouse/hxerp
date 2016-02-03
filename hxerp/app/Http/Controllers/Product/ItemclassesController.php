@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Product;
 
-use Illuminate\Http\Request;
+use App\models\Product\Itemclass;
+use App\Http\Requests\ItemclassRequest;
+use Request;
+//use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\models\Product\Item;
-use App\Bomhead;
-use App\Bomitem;
-use DB;
-
-class BomsController extends Controller
+class ItemclassesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,8 +20,9 @@ class BomsController extends Controller
     public function index()
     {
         //
-        $items = Item::latest('created_at')->with('itemclass')->paginate(10);
-        return view('boms.index', compact('items'));
+//         $itemclasses = Itemclass::all();
+        $itemclasses = Itemclass::latest('created_at')->paginate(10);
+        return view('product.itemclasses.index', compact('itemclasses'));
     }
 
     /**
@@ -34,24 +33,20 @@ class BomsController extends Controller
     public function create()
     {
         //
-//         $itemclasslist = Itemclass::lists('name', 'id');
-//         $itemtypeList = Itemtype::lists('name', 'id');
-//         return view('items.create', array(
-//             'itemclasslist' => $itemclasslist,
-//             'itemtypeList' => $itemtypeList
-//         ));
-        return view('boms.create');
+        return view('product.itemclasses.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(ItemclassRequest $request)
     {
         //
+        $input = Request::all();
+        Itemclass::create($input);
+        return redirect('product/itemclasses');
     }
 
     /**
@@ -63,6 +58,8 @@ class BomsController extends Controller
     public function show($id)
     {
         //
+        $itemclass = Itemclass::findOrFail($id);
+        return view('product.itemclasses.show', compact('itemclass'));
     }
 
     /**
@@ -74,22 +71,22 @@ class BomsController extends Controller
     public function edit($id)
     {
         //
-        $bomhead = Bomhead::findOrNew($id);
-        $parentItem = Item::findOrFail($id);
-        $bomitems = Bomitem::latest('created_at')->where('parent_item_id', $id)->with('parentitem')->get();
-        return view('boms.edit', compact('bomhead', 'parentItem', 'bomitems'));
+        $itemclass = Itemclass::findOrFail($id);
+        return view('product.itemclasses.edit', compact('itemclass'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update($id, ItemclassRequest $request)
     {
         //
+        $itemclass = Itemclass::findOrFail($id);
+        $itemclass->update($request->all());
+        return redirect('product/itemclasses');
     }
 
     /**
@@ -101,6 +98,7 @@ class BomsController extends Controller
     public function destroy($id)
     {
         //
-
+        Itemclass::destroy($id);
+        return redirect('product/itemclasses');
     }
 }

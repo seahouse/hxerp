@@ -20,12 +20,12 @@ class ViewComposerServiceProvider extends ServiceProvider
         });
         
         // itemclassList
-        view()->composer(array('items.create', 'items.edit'), function($view) {
+        view()->composer(array('items.create', 'items.edit', 'product.items.create', 'product.items.edit'), function($view) {
             $view->with('itemclassList', \App\Itemclass::orderby('id', 'asc')->lists('name', 'id'));
         });
         
         // itemtypeList
-        view()->composer(array('items.create', 'items.edit'), function($view) {
+        view()->composer(array('items.create', 'items.edit', 'product.items.create', 'product.items.edit'), function($view) {
             $view->with('itemtypeList', \App\Itemtype::orderby('id', 'asc')->lists('name', 'id'));
         });
         
@@ -105,7 +105,7 @@ class ViewComposerServiceProvider extends ServiceProvider
         });
         
         // charIList: item char list
-        view()->composer(array('items.create', 'items.edit'), function($view) {
+        view()->composer(array('items.create', 'items.edit', 'product.items.create', 'product.items.edit'), function($view) {
             $view->with('charIList', \App\Product\Characteristic::orderby('id', 'asc')->where('bitems', true)->lists('name', 'id'));
         });
     }
