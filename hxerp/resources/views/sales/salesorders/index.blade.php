@@ -13,7 +13,7 @@
     </div>
     
     <div class="panel-body">
-        <a href="{{ URL::to('salesorders/create') }}" class="btn btn-sm btn-success">新建</a>        
+        <a href="{{ URL::to('/sales/salesorders/create') }}" class="btn btn-sm btn-success">新建</a>        
         <form class="pull-right" action="/sales/salesorders/search" method="post">
             {!! csrf_field() !!}
             <div class="pull-right">
