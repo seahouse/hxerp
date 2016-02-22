@@ -66,6 +66,7 @@ Route::group(['prefix' => 'product', 'namespace' => 'Product', 'middleware' => [
     Route::resource('itemclasses', 'ItemclassesController');
     Route::post('items/search', 'ItemsController@search');
     Route::group(['prefix' => 'items'], function() {
+        Route::get('mmindex', 'ItemsController@mmindex');
         Route::get('mindex', 'ItemsController@mindex');
     });
     Route::resource('items', 'ItemsController');
