@@ -15,8 +15,8 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         // itemList
-        view()->composer(array('bomitems.createitem', 'bomitems.edit', 'sales.soitems.create', 'sales.soitems.edit'), function($view) {
-            $view->with('itemList', \App\Item::orderby('id', 'asc')->lists('item_number', 'id'));
+        view()->composer(array('product.bomitems.createitem', 'product.bomitems.edit', 'sales.soitems.create', 'sales.soitems.edit'), function($view) {
+            $view->with('itemList', \App\models\Product\Item::orderby('id', 'asc')->lists('item_number', 'id'));
         });
         
         // itemclassList

@@ -41,9 +41,9 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 //     });
 //     Route::resource('items', 'ItemsController');
     Route::resource('accountingorder1s', 'Accountingorder1sController');
-    Route::resource('boms', 'BomsController');
-    Route::get('bomitems/{id}/createitem', 'BomitemsController@createitem');
-    Route::resource('bomitems', 'BomitemsController');
+//     Route::resource('boms', 'BomsController');
+//     Route::get('bomitems/{id}/createitem', 'BomitemsController@createitem');
+//     Route::resource('bomitems', 'BomitemsController');
     Route::resource('contacts', 'ContactsController');
     Route::resource('custinfos', 'CustinfosController');
 
@@ -70,6 +70,9 @@ Route::group(['prefix' => 'product', 'namespace' => 'Product', 'middleware' => [
         Route::get('mindex', 'ItemsController@mindex');
     });
     Route::resource('items', 'ItemsController');
+    Route::resource('boms', 'BomsController');
+    Route::get('bomitems/{id}/createitem', 'BomitemsController@createitem');
+    Route::resource('bomitems', 'BomitemsController');
     Route::resource('characteristics', 'CharacteristicsController');
     Route::group(['prefix' => 'charasses'], function() {
         Route::post('addrecord', 'CharassesController@addrecord');
