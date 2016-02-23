@@ -87,7 +87,7 @@
                     </td>
                     <td>
                         @if ($item->itemtype->name == '生产' || $item->itemtype->name == '采购')
-                            <a href="{{ URL::to('boms/' . $item->id . '/edit') }}" target="_blank">编辑</a>
+                            <a href="{{ URL::to('product/boms/' . $item->id . '/edit') }}" target="_blank">编辑</a>
                         @else
                             --
                         @endif
