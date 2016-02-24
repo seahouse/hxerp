@@ -34,7 +34,7 @@
                         {{ $purchaseorder->status }}
                     </td>
                     <td>
-                        {{ $purchaseorder->sohead->number }}
+                        @if (isset($purchaseorder->sohead->number)) {{ $purchaseorder->sohead->number }} @endif
                     </td>
                     <td>
                         <a href="{{ URL::to('/purchase/purchaseorders/' . $purchaseorder->id . '/detail') }}" target="_blank">明细</a>
