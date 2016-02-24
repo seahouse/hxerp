@@ -27,7 +27,9 @@
 |
 */
 
-
+Route::get('app', function() {
+    return view('app');
+});
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     //
