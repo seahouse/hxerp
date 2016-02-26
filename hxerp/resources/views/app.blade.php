@@ -18,27 +18,32 @@
     
     <script type="text/javascript">
         alert('abcd');
-        dd.ready(function() {
-            dd.runtime.permission.requestAuthCode({
-                corpId: "ding8414637331385d36",
-                onSuccess: function(info) {
-                    alert(info.code);
-                    $.ajax({
-                        url: 'https://oapi.dingtalk.com/user/getuserinfo?code=' + info.code,
-                        type: 'GET',
-                        success: function(data, status, xhr) {
-                            var info = JSON.parse(JSON.parse(data));
-                            alert(info.userid);
-                        },
-                        error: function(xhr, errorType, error) {
-                            alert(errorType + ', ' + error);
-                        }
-                    });
-                },
-                onFail: function(err) {
-                    alert('err');
-                }
+        jQuery(document).ready(function(e) {
+            dd.ready(function() {
+                dd.runtime.permission.requestAuthCode({
+                    corpId: "ding8414637331385d36",
+                    onSuccess: function(info) {
+                        alert('auth code: ' + info.code);
+                        $.ajax({
+                            url: 'https://oapi.dingtalk.com/gettoken?corpid=ding8414637331385d36&corpsecret=T3nba1syKPqaFxJPv9XZMSUGkLdHbEenF2wjEsdHQAV4_XDgp8X5NsHEfRCrlK5F',
+                            type: 'GET',
+                            success: function(data) {
+                                alert('success');
+                                var infoAccessToken = JSON.parse(JSON.parse(data));
+                                alert('access token: ' + infoAccessToken.access_token);
+                            },
+                            error: function(xhr, errorType, error) {
+                            	alert('xhr.status: ' + xhr.status + 'errorType: ' + errorType + ', ' + error);
+                            	alert(xhr.readyState);
+                            }
+                        });
+                    },
+                    onFail: function(err) {
+                        alert('err');
+                    }
+                });
             });
         });
+
     </script>
 </html>
