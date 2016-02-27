@@ -31,6 +31,8 @@ Route::get('app', function() {
     return view('app');
 });
 
+Route::resource('dingtalk', 'DingTalkController');
+
 Route::group(['middleware' => ['web', 'auth']], function () {
     //
     Route::get('/', function() { return view('navbarerp'); });
