@@ -1,18 +1,30 @@
 报销
 数据表
 
+---------- reimbursementtype 报销类别 ----------
+id
+name		名称
+descrip		说明
+
 ---------- reimbursement 报销 ----------
 id
 reimbursementtype_id		报销类别
-date		申请日期
-number		报销编号
-amount		报销金额
-customer_id	客户
-contacts	客户联系人
+date			申请日期
+number			报销编号
+amount			报销金额
+customer_id		客户
+contacts		客户联系人
 contactspost	客户联系人职务
-<order_id>	对应订单
-status		报销状态
-descrip		明细说明
+<order_id>		对应订单
+status			报销状态
+statusdescrip	状态描述
+descrip			明细说明
+dateGo			出差去日
+dateBack		出差回日
+mealAmount		伙食补贴
+ticketAmount	车船费
+stayAmount		住宿费
+otherAmount		其他费用
 approvaler1_id	审批人1（出纳，初审）
 approvaldate1	审批日期1
 approvaler2_id	审批人2（销售副总，复审）
@@ -22,8 +34,5 @@ approvaldate3	审批日期3
 applicant_id	申请人
 
 
----------- reimbursementtype 报销类别 ----------
-id
-name		名称
-descrip		说明
+
 
